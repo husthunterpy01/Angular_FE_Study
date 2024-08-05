@@ -1,0 +1,13 @@
+/* Id will be defined by # */
+
+#first-heading {
+    color: red;
+}
+
+
+/* class will be defined by . */
+
+.fourth-heading {
+    color: blue;
+    font-size: 13px;
+}
