@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<!-- Header for html document-->
+<!-- background-size will scale the size of width, height will be autoscale -->
+
+<head>
+    <title>Russia Federation</title>
+    <meta charset="UTF-8">
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+        
+        h1 {
+            position: absolute;
+            top: 100px;
+            right: 100px;
+        }
+        
+        .box {
+            width: 100%;
+            height: 120px;
+            background-color: #333;
+            position: relative;
+        }
+        
+        .box-child {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.5);
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            position: absolute;
+        }
+        
+        .box2 {
+            width: 300px;
+            height: 100px;
+            background-color: violet;
+            position: relative;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<!-- Body -->
+
+<body>
+    <div class="box">
+        Welcome to my channel
+        <div>
+            <div>
+                <div class="box2">
+                    <div class="box-child"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
