@@ -1,0 +1,28 @@
+<!-- <input id="elem" type="button" value="Click me" />
+
+<script>
+    function handler1() {
+        alert('Thanks!');
+    };
+
+    function handler2() {
+        alert('Thanks again!');
+    }
+
+    elem.onclick = () => alert("Hello");
+    elem.addEventListener("click", handler1); // Thanks!
+    elem.addEventListener("click", handler2); // Thanks again!
+</script> -->
+
+<form>
+    <input type="radio" name="age" value="10">
+    <input type="radio" name="age" value="20">
+</form>
+
+<script>
+    let form = document.forms[0];
+
+    let ageElems = form.elements.age;
+
+    alert(ageElems[0].value); // [object HTMLInputElement]
+</script>
