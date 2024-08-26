@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEM Sample</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="toast">
+        <!--Success-->
+        <div class="toast toast--success">
+            <div class="toast__icon">
+                <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">Success</h3>
+                <p class="toast__msg"> Connect success</p>
+            </div>
+            <div class="toast__close">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+        </div>
+
+        <!--Info-->
+        <div class="toast toast--info">
+            <div class="toast__icon">
+                <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">Info</h3>
+                <p class="toast__msg"> Connect success</p>
+            </div>
+            <div class="toast__close">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+        </div>
+
+        <!--Warning-->
+        <div class="toast toast--warning">
+            <div class="toast__icon">
+                <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">Warning</h3>
+                <p class="toast__msg"> Connect success</p>
+            </div>
+            <div class="toast__close">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+        </div>
+
+        <!--Error-->
+        <div class="toast">
+            <div class="toast__icon">
+                <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="toast__body">
+                <h3 class="toast__title">Error</h3>
+                <p class="toast__msg"> Connect success</p>
+            </div>
+            <div class="toast__close">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Making the physical button for the animation -->
+    <div>
+        <div onclick="showSuccessToast()" class="btn btn--success"> Show success toast</div>
+        <div onclick="showFailToast()" class="btn btn--danger"> Show error toast</div>
+    </div>
+    <script>
+        //Toast function
+        function toast({
+            title = '',
+            message = '',
+            type = 'info',
+            duration = 2000
+        }) {
+            const main = document.getElementById('toast');
+            if (main) {
+                const toast = document.createElement('div');
+                const autoRemoveId = setTimeout(function() {
+                    main.removeChild(toast)
+                }, duration + 1000);
+                toast.onclick = function(e) {
+                    if (e.target.closest('.toast__close')) {
+                        main.removeChild(toast);
+                        clearTimeout(autoRemoveId);
+                    }
+                }
+                const icons = {
+                    success: 'fa-regular fa-circle-check',
+                    info: 'fa-solid fa-info',
+                    warning: 'fa-solid fa-triangle-exclamation',
+                    error: 'fa-solid fa-exclamation'
+                }
+                const icon = icons[type];
+                const delay = (duration / 1000).toFixed(2);
+                toast.classList.add('toast', `toast--${type}`);
+                toast.style.animation = `slideInLeft .3s, fadeOut linear 1s ${delay}s forwards`;
+                toast.innerHTML = `
+                <div class="toast__icon">
+                    <i class="${icon}"></i>
+                </div>
+                <div class="toast__body">
+                    <h3 class="toast__title">${title}</h3>
+                    <p class="toast__msg">${message}</p>
+                </div>
+                <div class="toast__close">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                </div>
+            `;
+                main.appendChild(toast);
+
+            }
+
+        }
+
+        function showSuccessToast() {
+            toast({
+                title: 'Success',
+                message: 'The device connects to the internet successfully',
+                type: 'success',
+                duration: 2000
+            });
+        }
+
+        function showFailToast() {
+            toast({
+                title: 'Fail',
+                message: 'The device connects fail, please try again',
+                type: 'error',
+                duration: 2000
+            });
+        }
+    </script>
+</body>
+
+</html>
